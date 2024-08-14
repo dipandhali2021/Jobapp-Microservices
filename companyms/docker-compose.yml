@@ -30,6 +30,17 @@ services:
       - jobapp
     restart: unless-stopped
 
+  zipkin:
+    container_name: zipkin
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - jobapp
+    restart: unless-stopped
+
+
+
 
 volumes:
   postgres:
