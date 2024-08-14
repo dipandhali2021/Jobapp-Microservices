@@ -1,0 +1,40 @@
+services:
+  postgresms:
+    container_name: postgresms
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - jobapp
+    restart: unless-stopped
+
+  pgadminms:
+    container_name: pgadminms
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@mifos.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    networks:
+      - jobapp
+    restart: unless-stopped
+
+
+volumes:
+  postgres:
+  pgadmin:
+
+networks:
+  jobapp:
+    driver: bridge
