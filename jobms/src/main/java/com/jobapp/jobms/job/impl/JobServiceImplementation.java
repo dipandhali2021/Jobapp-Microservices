@@ -3,10 +3,14 @@ package com.jobapp.jobms.job.impl;
 import com.jobapp.jobms.job.Job;
 import com.jobapp.jobms.job.JobRepository;
 import com.jobapp.jobms.job.JobService;
+import com.jobapp.jobms.job.dto.JobWithcompanyDTO;
+import com.jobapp.jobms.job.external.Company;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class JobServiceImplementation implements JobService {
@@ -18,10 +22,19 @@ public class JobServiceImplementation implements JobService {
     }
 
 
-
     @Override
-    public List<Job> findAll() {
-        return jobRepository.findAll();
+    public List<JobWithcompanyDTO> findAll() {
+        List<Job> jobs = jobRepository.findAll();
+        return jobs.stream().map(this::convertToDto).collect(Collectors.toList());
+    }
+
+    private JobWithcompanyDTO convertToDto(Job job) {
+        JobWithcompanyDTO jobWithcompanyDTO = new JobWithcompanyDTO();
+        jobWithcompanyDTO.setJob(job);
+        RestTemplate restTemplate = new RestTemplate();
+        Company company = restTemplate.getForObject("http://localhost:8081/companies/" + job.getCompanyId(), Company.class);
+        jobWithcompanyDTO.setCompany(company);
+        return jobWithcompanyDTO;
     }
 
     @Override
