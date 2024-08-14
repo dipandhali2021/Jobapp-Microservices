@@ -1,6 +1,6 @@
 package com.jobapp.jobms.job;
 
-import com.jobapp.jobms.job.dto.JobWithcompanyDTO;
+import com.jobapp.jobms.job.dto.jobDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -18,7 +18,7 @@ public class JobController {
     }
 
     @GetMapping
-    public ResponseEntity<List<JobWithcompanyDTO>> findAll() {
+    public ResponseEntity<List<jobDTO>> findAll() {
         return new ResponseEntity<>(jobService.findAll(), HttpStatus.OK);
     }
 
@@ -29,18 +29,18 @@ public class JobController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Job> findJobById(@PathVariable Long id) {
-        Job job = jobService.getJobById(id);
-        if (job != null) {
-            return new ResponseEntity<>(job, HttpStatus.OK);
+    public ResponseEntity<jobDTO> findJobById(@PathVariable Long id) {
+        jobDTO jobDTO = jobService.getJobById(id);
+        if (jobDTO != null) {
+            return new ResponseEntity<>(jobDTO, HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteJob(@PathVariable Long id) {
-        Job job = jobService.getJobById(id);
-        if (job != null) {
+        jobDTO jobDTO = jobService.getJobById(id);
+        if (jobDTO != null) {
             jobService.deleteJob(id);
             return new ResponseEntity<>("Job deleted successfully", HttpStatus.OK);
         }

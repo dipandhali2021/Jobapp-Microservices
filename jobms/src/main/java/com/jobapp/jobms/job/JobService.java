@@ -1,15 +1,15 @@
 package com.jobapp.jobms.job;
 
-import com.jobapp.jobms.job.dto.JobWithcompanyDTO;
+import com.jobapp.jobms.job.dto.jobDTO;
 
 import java.util.List;
 
 public interface JobService {
 
-    List<JobWithcompanyDTO> findAll();
+    List<jobDTO> findAll();
     void createJob(Job job);
 
-    Job getJobById(Long id);
+    jobDTO getJobById(Long id);
 
     void deleteJob(Long id);
 
