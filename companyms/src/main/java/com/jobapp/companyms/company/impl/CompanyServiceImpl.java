@@ -3,6 +3,8 @@ package com.jobapp.companyms.company.impl;
 import com.jobapp.companyms.company.Company;
 import com.jobapp.companyms.company.CompanyRepository;
 import com.jobapp.companyms.company.CompanyService;
+import com.jobapp.companyms.company.clients.ReviewClient;
+import com.jobapp.companyms.company.dto.ReviewMessage;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,9 +14,11 @@ import java.util.Optional;
 @Service
 public class CompanyServiceImpl implements CompanyService {
     private final CompanyRepository companyRepository;
+    private final ReviewClient reviewClient;
 
-    public CompanyServiceImpl(CompanyRepository companyRepository) {
+    public CompanyServiceImpl(CompanyRepository companyRepository, ReviewClient reviewClient) {
         this.companyRepository = companyRepository;
+        this.reviewClient = reviewClient;
     }
 
     @Override
@@ -56,6 +60,12 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public Company getCompanyById(Long id) {
         return companyRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void updateCompanyRating(ReviewMessage reviewMessage) {
+        System.out.println("Updating company rating");
+
     }
 }
 

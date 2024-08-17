@@ -1,30 +1,11 @@
-package com.jobapp.reviewms.review;
+package com.jobapp.companyms.company.dto;
 
-
-import jakarta.persistence.*;
-
-@Entity
-public class Review {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ReviewMessage {
     private Long id;
     private String title;
     private String description;
-    private double rating;
-
-    public Review() {
-    }
-
+    private Double rating;
     private Long companyId;
-
-    public Long getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(Long companyId) {
-        this.companyId = companyId;
-    }
 
     public Long getId() {
         return id;
@@ -54,7 +35,15 @@ public class Review {
         return rating;
     }
 
-    public void setRating(double rating) {
+    public void setRating(Double rating) {
         this.rating = rating;
+    }
+
+    public Long getCompanyId() {
+        return companyId;
+    }
+
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
     }
 }
