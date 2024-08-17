@@ -9,6 +9,9 @@ import com.jobapp.jobms.job.dto.jobDTO;
 import com.jobapp.jobms.job.external.Company;
 import com.jobapp.jobms.job.external.Review;
 import com.jobapp.jobms.job.mapper.JobMapper;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
+import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.http.HttpMethod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -30,6 +33,7 @@ public class JobServiceImplementation implements JobService {
 
     private CompanyClient companyClient;
     private ReviewClient reviewClient;
+    int attempts = 0;
 
     public JobServiceImplementation(JobRepository jobRepository, CompanyClient companyClient, ReviewClient reviewClient) {
         this.jobRepository = jobRepository;
@@ -39,9 +43,18 @@ public class JobServiceImplementation implements JobService {
 
 
     @Override
+//    @CircuitBreaker(name = "jobBreaker", fallbackMethod = "companyBreakerFallback")
+//    @Retry(name = "jobBreaker", fallbackMethod = "companyBreakerFallback")
+    @RateLimiter(name = "jobBreaker")
     public List<jobDTO> findAll() {
+        System.out.println("Attempts: " + attempts++);
         List<Job> jobs = jobRepository.findAll();
         return jobs.stream().map(this::convertToDto).collect(Collectors.toList());
+    }
+
+    public List<jobDTO> companyBreakerFallback(Exception e) {
+        System.out.println("Company service is down, returning empty list");
+        return List.of();
     }
 
     private jobDTO convertToDto(Job job) {
