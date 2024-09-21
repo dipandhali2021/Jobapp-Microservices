@@ -65,6 +65,12 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public void updateCompanyRating(ReviewMessage reviewMessage) {
         System.out.println("Updating company rating");
+        System.out.println(reviewMessage.getRating());
+        Company company = companyRepository.findById(reviewMessage.getCompanyId()).orElseThrow(()->
+                new RuntimeException("Company not found"));
+        double averageRating = reviewClient.getAverageRatingForCompany(reviewMessage.getCompanyId());
+        company.setRating(averageRating);
+        companyRepository.save(company);
 
     }
 }

@@ -4,7 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="caf5d13d-9c32-4281-ba5f-184fc60c594a" name="Changes" comment="" />
+    <list default="true" id="caf5d13d-9c32-4281-ba5f-184fc60c594a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/companyms/src/main/resources/application-docker.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/companyms/src/main/resources/application-k8s.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/configserver/src/main/resources/application-docker.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gateway/src/main/resources/application-docker.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jobms/src/main/resources/application-docker.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jobms/src/main/resources/application-k8s.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reviewms/src/main/resources/application-docker.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reviewms/src/main/resources/application-k8s.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/companyms/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/companyms/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/companyms/src/main/java/com/jobapp/companyms/company/clients/ReviewClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/companyms/src/main/java/com/jobapp/companyms/company/clients/ReviewClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/companyms/src/main/java/com/jobapp/companyms/company/impl/CompanyServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/companyms/src/main/java/com/jobapp/companyms/company/impl/CompanyServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/companyms/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/companyms/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gateway/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobms/src/main/java/com/jobapp/jobms/job/Job.java" beforeDir="false" afterPath="$PROJECT_DIR$/jobms/src/main/java/com/jobapp/jobms/job/Job.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobms/src/main/java/com/jobapp/jobms/job/clients/CompanyClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/jobms/src/main/java/com/jobapp/jobms/job/clients/CompanyClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobms/src/main/java/com/jobapp/jobms/job/clients/ReviewClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/jobms/src/main/java/com/jobapp/jobms/job/clients/ReviewClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobms/src/main/java/com/jobapp/jobms/job/impl/JobServiceImplementation.java" beforeDir="false" afterPath="$PROJECT_DIR$/jobms/src/main/java/com/jobapp/jobms/job/impl/JobServiceImplementation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jobms/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/jobms/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/reviewms/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/reviewms/src/main/resources/application.properties" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,6 +53,13 @@
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="jdkForImporter" value="21" />
+      </MavenImportingSettings>
+    </option>
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -39,25 +70,83 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Maven.companyms [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.jobms [package].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.CompanymsApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ConfigserverApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.GatewayApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.JobmsApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ReviewmsApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.ServiceRegApplication.executor&quot;: &quot;Run&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/job microservice&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/job microservice/configserver&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;run.configurations.included.in.services&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.importing&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn package" />
+    </option>
+  </component>
   <component name="RunDashboard">
     <option name="configurationTypes">
       <set>
         <option value="Application" />
+        <option value="KtorApplicationConfigurationType" />
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
       </set>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.CompanymsApplication">
     <configuration name="CompanymsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="companyms" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.jobapp.companyms.CompanymsApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConfigserverApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="configserver" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.jobapp.configserver.ConfigserverApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GatewayApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="gateway" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.jobapp.gateway.GatewayApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JobmsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="jobms" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.jobapp.jobms.JobmsApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ReviewmsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="reviewms" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.jobapp.reviewms.ReviewmsApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -66,8 +155,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.300" />
-        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.300" />
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.419" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.419" />
       </set>
     </attachedChunks>
   </component>
@@ -81,6 +170,9 @@
       <updated>1723640972779</updated>
       <workItem from="1723640973882" duration="201000" />
       <workItem from="1723873282394" duration="20000" />
+      <workItem from="1726843563283" duration="3325000" />
+      <workItem from="1726858151271" duration="7452000" />
+      <workItem from="1726896640315" duration="621000" />
     </task>
     <servers />
   </component>

@@ -43,9 +43,9 @@ public class JobServiceImplementation implements JobService {
 
 
     @Override
-//    @CircuitBreaker(name = "jobBreaker", fallbackMethod = "companyBreakerFallback")
+    @CircuitBreaker(name = "jobBreaker", fallbackMethod = "companyBreakerFallback")
 //    @Retry(name = "jobBreaker", fallbackMethod = "companyBreakerFallback")
-    @RateLimiter(name = "jobBreaker")
+//    @RateLimiter(name = "jobBreaker")
     public List<jobDTO> findAll() {
         System.out.println("Attempts: " + attempts++);
         List<Job> jobs = jobRepository.findAll();

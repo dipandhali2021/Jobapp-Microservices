@@ -14,13 +14,6 @@ public class Job {
     private String location;
     private Long companyId;
 
-    public Long getCompanyId() {
-        return companyId;
-    }
-
-    public void setCompanyId(Long companyId) {
-        this.companyId = companyId;
-    }
 
     public Job(Long id, String title, String description, String minSalary, String maxSalary, String location) {
         this.id = id;
@@ -33,7 +26,13 @@ public class Job {
 
     public Job() {
     }
+    public Long getCompanyId() {
+        return companyId;
+    }
 
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
+    }
 
     public Long getId() {
         return id;

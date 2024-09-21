@@ -30,12 +30,101 @@ services:
       - jobapp
     restart: unless-stopped
 
+
+  config-server-ms:
+    container_name: config-server-ms
+    image: dipandhali2021/config-server-ms
+    ports:
+      - 8080:8080
+    depends_on:
+      - servicereg
+    networks:
+      - microservice-network
+      - jobapp
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
+
+
+  servicereg:
+    container_name: servicereg
+    image: dipandhali2021/servicereg:latest
+    ports:
+      - 8761:8761
+    depends_on:
+      - rabbitmq
+      - zipkin
+      - postgresms
+      - pgadminms
+    networks:
+      - microservice-network
+      - jobapp
+
+
+  companyms:
+    container_name: company
+    image: dipandhali2021/companyms:latest
+    ports:
+      - 8081:8081
+    depends_on:
+      - servicereg
+      - config-server-ms
+    networks:
+      - microservice-network
+      - jobapp
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
+
+
+  jobms:
+    container_name: job
+    image: dipandhali2021/jobms:latest
+    ports:
+      - 8082:8082
+    depends_on:
+      - servicereg
+      - config-server-ms
+    networks:
+      - microservice-network
+      - jobapp
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
+        - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://servicereg:8761/eureka/
+
+  reviewms:
+    container_name: review
+    image: dipandhali2021/reviewms:latest
+    ports:
+      - 8083:8083
+    depends_on:
+      - servicereg
+      - config-server-ms
+    networks:
+      - microservice-network
+      - jobapp
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
+
+
+  gatewayms:
+    container_name: gateway
+    image: dipandhali2021/gateway-ms:latest
+    ports:
+      - 8084:8084
+    depends_on:
+      - servicereg
+    networks:
+      - microservice-network
+      - jobapp
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
+
   zipkin:
     container_name: zipkin
     image: openzipkin/zipkin
     ports:
       - "9411:9411"
     networks:
+      - microservice-network
       - jobapp
     restart: unless-stopped
 
@@ -46,6 +135,7 @@ services:
       - "5672:5672"
       - "15672:15672"
     networks:
+      - microservice-network
       - jobapp
     restart: unless-stopped
 
@@ -56,4 +146,6 @@ volumes:
 
 networks:
   jobapp:
+    driver: bridge
+  microservice-network:
     driver: bridge
