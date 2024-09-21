@@ -1,0 +1,124 @@
+services:
+  - type: web
+    name: postgresms
+    env: docker
+    plan: standard
+    dockerImage: postgres
+    envVars:
+      - key: POSTGRES_USER
+        value: postgres
+      - key: POSTGRES_PASSWORD
+        value: postgres
+      - key: PGDATA
+        value: /data/postgres
+    disk:
+      sizeGB: 10
+    privateNetworking: true
+
+  - type: web
+    name: pgadminms
+    env: docker
+    plan: standard
+    dockerImage: dpage/pgadmin4
+    envVars:
+      - key: PGADMIN_DEFAULT_EMAIL
+        value: admin@mifos.org
+      - key: PGADMIN_DEFAULT_PASSWORD
+        value: admin
+      - key: PGADMIN_CONFIG_SERVER_MODE
+        value: 'False'
+    disk:
+      sizeGB: 5
+    privateNetworking: true
+    healthCheckPath: /
+
+  - type: web
+    name: config-server-ms
+    env: docker
+    plan: standard
+    dockerImage: dipandhali2021/config-server-ms
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: docker
+    privateNetworking: true
+
+  - type: web
+    name: servicereg
+    env: docker
+    plan: standard
+    dockerImage: dipandhali2021/servicereg:latest
+    privateNetworking: true
+    dependsOn:
+      - postgresms
+      - pgadminms
+      - rabbitmq
+      - zipkin
+
+  - type: web
+    name: companyms
+    env: docker
+    plan: standard
+    dockerImage: dipandhali2021/companyms:latest
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: docker
+    dependsOn:
+      - config-server-ms
+      - servicereg
+    privateNetworking: true
+
+  - type: web
+    name: jobms
+    env: docker
+    plan: standard
+    dockerImage: dipandhali2021/jobms:latest
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: docker
+      - key: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+        value: http://servicereg:8761/eureka/
+    dependsOn:
+      - config-server-ms
+      - servicereg
+    privateNetworking: true
+
+  - type: web
+    name: reviewms
+    env: docker
+    plan: standard
+    dockerImage: dipandhali2021/reviewms:latest
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: docker
+    dependsOn:
+      - config-server-ms
+      - servicereg
+    privateNetworking: true
+
+  - type: web
+    name: gatewayms
+    env: docker
+    plan: standard
+    dockerImage: dipandhali2021/gateway-ms:latest
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: docker
+    dependsOn:
+      - servicereg
+    privateNetworking: true
+
+  - type: web
+    name: zipkin
+    env: docker
+    plan: standard
+    dockerImage: openzipkin/zipkin
+    privateNetworking: true
+
+  - type: web
+    name: rabbitmq
+    env: docker
+    plan: standard
+    dockerImage: rabbitmq:3-management
+    privateNetworking: true
+    healthCheckPath: /
+
