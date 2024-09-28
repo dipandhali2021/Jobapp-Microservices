@@ -1,122 +1,122 @@
 services:
-  postgresms:
-    container_name: postgresms
-    image: postgres
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      PGDATA: /data/postgres
-    volumes:
-      - postgres:/data/postgres
-    ports:
-      - "5432:5432"
-    networks:
-      - jobapp
-    restart: unless-stopped
+  # postgresms:
+  #   container_name: postgresms
+  #   image: postgres
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: postgres
+  #     PGDATA: /data/postgres
+  #   volumes:
+  #     - postgres:/data/postgres
+  #   ports:
+  #     - "5432:5432"
+  #   networks:
+  #     - jobapp
+  #   restart: unless-stopped
 
-  pgadminms:
-    container_name: pgadminms
-    image: dpage/pgadmin4
-    environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@mifos.org}
-      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
-      PGADMIN_CONFIG_SERVER_MODE: 'False'
+  # pgadminms:
+  #   container_name: pgadminms
+  #   image: dpage/pgadmin4
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@mifos.org}
+  #     PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+  #     PGADMIN_CONFIG_SERVER_MODE: 'False'
 
-    volumes:
-      - pgadmin:/var/lib/pgadmin
-    ports:
-      - "5050:80"
-    networks:
-      - jobapp
-    restart: unless-stopped
-
-
-  config-server-ms:
-    container_name: config-server-ms
-    image: dipandhali2021/configserverms-v0:latest
-    ports:
-      - 8080:8080
-    depends_on:
-      - servicereg
-    networks:
-      - microservice-network
-      - jobapp
-    environment:
-        - SPRING_PROFILES_ACTIVE=docker
+  #   volumes:
+  #     - pgadmin:/var/lib/pgadmin
+  #   ports:
+  #     - "5050:80"
+  #   networks:
+  #     - jobapp
+  #   restart: unless-stopped
 
 
-  servicereg:
-    container_name: servicereg
-    image: dipandhali2021/serviceregms-v0:latest
-    ports:
-      - 8761:8761
-    depends_on:
-      - rabbitmq
-      - zipkin
-      - postgresms
-      - pgadminms
-    networks:
-      - microservice-network
-      - jobapp
+  # config-server-ms:
+  #   container_name: config-server-ms
+  #   image: dipandhali2021/configserverms-v0:latest
+  #   ports:
+  #     - 8080:8080
+  #   depends_on:
+  #     - servicereg
+  #   networks:
+  #     - microservice-network
+  #     - jobapp
+  #   environment:
+  #       - SPRING_PROFILES_ACTIVE=docker
 
 
-  companyms:
-    container_name: company
-    image: dipandhali2021/companyms-v0:latest
-    ports:
-      - 8081:8081
-    depends_on:
-      - servicereg
-      - config-server-ms
-    networks:
-      - microservice-network
-      - jobapp
-    environment:
-        - SPRING_PROFILES_ACTIVE=docker
+  # servicereg:
+  #   container_name: servicereg
+  #   image: dipandhali2021/serviceregms-v0:latest
+  #   ports:
+  #     - 8761:8761
+  #   depends_on:
+  #     - rabbitmq
+  #     - zipkin
+  #     - postgresms
+  #     - pgadminms
+  #   networks:
+  #     - microservice-network
+  #     - jobapp
 
 
-  jobms:
-    container_name: job
-    image: dipandhali2021/jobms-v0:latest
-    ports:
-      - 8082:8082
-    depends_on:
-      - servicereg
-      - config-server-ms
-    networks:
-      - microservice-network
-      - jobapp
-    environment:
-        - SPRING_PROFILES_ACTIVE=docker
-        - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://servicereg:8761/eureka/
-
-  reviewms:
-    container_name: review
-    image: dipandhali2021/reviewms-v0:latest
-    ports:
-      - 8083:8083
-    depends_on:
-      - servicereg
-      - config-server-ms
-    networks:
-      - microservice-network
-      - jobapp
-    environment:
-        - SPRING_PROFILES_ACTIVE=docker
+  # companyms:
+  #   container_name: company
+  #   image: dipandhali2021/companyms-v0:latest
+  #   ports:
+  #     - 8081:8081
+  #   depends_on:
+  #     - servicereg
+  #     - config-server-ms
+  #   networks:
+  #     - microservice-network
+  #     - jobapp
+  #   environment:
+  #       - SPRING_PROFILES_ACTIVE=docker
 
 
-  gatewayms:
-    container_name: gateway
-    image: dipandhali2021/gatewayms-v0:latest
-    ports:
-      - 8084:8084
-    depends_on:
-      - servicereg
-    networks:
-      - microservice-network
-      - jobapp
-    environment:
-        - SPRING_PROFILES_ACTIVE=docker
+  # jobms:
+  #   container_name: job
+  #   image: dipandhali2021/jobms-v0:latest
+  #   ports:
+  #     - 8082:8082
+  #   depends_on:
+  #     - servicereg
+  #     - config-server-ms
+  #   networks:
+  #     - microservice-network
+  #     - jobapp
+  #   environment:
+  #       - SPRING_PROFILES_ACTIVE=docker
+  #       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://servicereg:8761/eureka/
+
+  # reviewms:
+  #   container_name: review
+  #   image: dipandhali2021/reviewms-v0:latest
+  #   ports:
+  #     - 8083:8083
+  #   depends_on:
+  #     - servicereg
+  #     - config-server-ms
+  #   networks:
+  #     - microservice-network
+  #     - jobapp
+  #   environment:
+  #       - SPRING_PROFILES_ACTIVE=docker
+
+
+  # gatewayms:
+  #   container_name: gateway
+  #   image: dipandhali2021/gatewayms-v0:latest
+  #   ports:
+  #     - 8084:8084
+  #   depends_on:
+  #     - servicereg
+  #   networks:
+  #     - microservice-network
+  #     - jobapp
+  #   environment:
+  #       - SPRING_PROFILES_ACTIVE=docker
 
   zipkin:
     container_name: zipkin
@@ -140,9 +140,9 @@ services:
     restart: unless-stopped
 
 
-volumes:
-  postgres:
-  pgadmin:
+# volumes:
+  # postgres:
+  # pgadmin:
 
 networks:
   jobapp:
