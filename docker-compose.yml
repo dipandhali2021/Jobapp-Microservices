@@ -1,34 +1,36 @@
 services:
-  # postgresms:
-  #   container_name: postgresms
-  #   image: postgres
-  #   environment:
-  #     POSTGRES_USER: postgres
-  #     POSTGRES_PASSWORD: postgres
-  #     PGDATA: /data/postgres
-  #   volumes:
-  #     - postgres:/data/postgres
-  #   ports:
-  #     - "5432:5432"
-  #   networks:
-  #     - jobapp
-  #   restart: unless-stopped
+  postgresms:
+    container_name: postgresms
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - jobapp
+    restart: unless-stopped
+    mem_limit: 256m
 
-  # pgadminms:
-  #   container_name: pgadminms
-  #   image: dpage/pgadmin4
-  #   environment:
-  #     PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@mifos.org}
-  #     PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
-  #     PGADMIN_CONFIG_SERVER_MODE: 'False'
+  pgadminms:
+    container_name: pgadminms
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@mifos.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
 
-  #   volumes:
-  #     - pgadmin:/var/lib/pgadmin
-  #   ports:
-  #     - "5050:80"
-  #   networks:
-  #     - jobapp
-  #   restart: unless-stopped
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    networks:
+      - jobapp
+    restart: unless-stopped
+    mem_limit: 256m
 
 
   # config-server-ms:
@@ -127,6 +129,7 @@ services:
       - microservice-network
       - jobapp
     restart: unless-stopped
+    mem_limit: 256m
 
   rabbitmq:
     container_name: rabbitmq
@@ -138,11 +141,12 @@ services:
       - microservice-network
       - jobapp
     restart: unless-stopped
+    mem_limit: 256m
 
 
-# volumes:
-  # postgres:
-  # pgadmin:
+volumes:
+  postgres:
+  pgadmin:
 
 networks:
   jobapp:
