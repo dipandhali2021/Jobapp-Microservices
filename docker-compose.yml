@@ -13,6 +13,7 @@ services:
   #   networks:
   #     - jobapp
   #   restart: unless-stopped
+  #   mem_limit: 256m
 
   # pgadminms:
   #   container_name: pgadminms
@@ -29,35 +30,36 @@ services:
   #   networks:
   #     - jobapp
   #   restart: unless-stopped
+  #   mem_limit: 256m
 
 
-  # config-server-ms:
-  #   container_name: config-server-ms
-  #   image: dipandhali2021/configserverms-v0:latest
-  #   ports:
-  #     - 8080:8080
-  #   depends_on:
-  #     - servicereg
-  #   networks:
-  #     - microservice-network
-  #     - jobapp
-  #   environment:
-  #       - SPRING_PROFILES_ACTIVE=docker
+  config-server-ms:
+    container_name: config-server-ms
+    image: dipandhali2021/configserverms-v0:latest
+    ports:
+      - 8080:8080
+    depends_on:
+      - servicereg
+    networks:
+      - microservice-network
+      - jobapp
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
 
 
-  # servicereg:
-  #   container_name: servicereg
-  #   image: dipandhali2021/serviceregms-v0:latest
-  #   ports:
-  #     - 8761:8761
-  #   depends_on:
-  #     - rabbitmq
-  #     - zipkin
-  #     - postgresms
-  #     - pgadminms
-  #   networks:
-  #     - microservice-network
-  #     - jobapp
+  servicereg:
+    container_name: servicereg
+    image: dipandhali2021/serviceregms-v0:latest
+    ports:
+      - 8761:8761
+    depends_on:
+      - rabbitmq
+      - zipkin
+      - postgresms
+      - pgadminms
+    networks:
+      - microservice-network
+      - jobapp
 
 
   # companyms:
@@ -118,31 +120,33 @@ services:
   #   environment:
   #       - SPRING_PROFILES_ACTIVE=docker
 
-  zipkin:
-    container_name: zipkin
-    image: openzipkin/zipkin
-    ports:
-      - "9411:9411"
-    networks:
-      - microservice-network
-      - jobapp
-    restart: unless-stopped
+  # zipkin:
+  #   container_name: zipkin
+  #   image: openzipkin/zipkin
+  #   ports:
+  #     - "9411:9411"
+  #   networks:
+  #     - microservice-network
+  #     - jobapp
+  #   restart: unless-stopped
+  #   mem_limit: 256m
 
-  rabbitmq:
-    container_name: rabbitmq
-    image: rabbitmq:3-management
-    ports:
-      - "5672:5672"
-      - "15672:15672"
-    networks:
-      - microservice-network
-      - jobapp
-    restart: unless-stopped
+  # rabbitmq:
+  #   container_name: rabbitmq
+  #   image: rabbitmq:3-management
+  #   ports:
+  #     - "5672:5672"
+  #     - "15672:15672"
+  #   networks:
+  #     - microservice-network
+  #     - jobapp
+  #   restart: unless-stopped
+  #   mem_limit: 256m
 
 
 # volumes:
-  # postgres:
-  # pgadmin:
+#   postgres:
+#   pgadmin:
 
 networks:
   jobapp:
