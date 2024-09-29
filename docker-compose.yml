@@ -1,36 +1,36 @@
 services:
-  # postgresms:
-  #   container_name: postgresms
-  #   image: postgres
-  #   environment:
-  #     POSTGRES_USER: postgres
-  #     POSTGRES_PASSWORD: postgres
-  #     PGDATA: /data/postgres
-  #   volumes:
-  #     - postgres:/data/postgres
-  #   ports:
-  #     - "5432:5432"
-  #   networks:
-  #     - jobapp
-  #   restart: unless-stopped
-  #   mem_limit: 256m
+  postgresms:
+    container_name: postgresms
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - jobapp
+    restart: unless-stopped
+    mem_limit: 256m
 
-  # pgadminms:
-  #   container_name: pgadminms
-  #   image: dpage/pgadmin4
-  #   environment:
-  #     PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@mifos.org}
-  #     PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
-  #     PGADMIN_CONFIG_SERVER_MODE: 'False'
+  pgadminms:
+    container_name: pgadminms
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@mifos.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
 
-  #   volumes:
-  #     - pgadmin:/var/lib/pgadmin
-  #   ports:
-  #     - "5050:80"
-  #   networks:
-  #     - jobapp
-  #   restart: unless-stopped
-  #   mem_limit: 256m
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    ports:
+      - "5050:80"
+    networks:
+      - jobapp
+    restart: unless-stopped
+    mem_limit: 256m
 
 
   config-server-ms:
@@ -62,91 +62,91 @@ services:
       - jobapp
 
 
-  # companyms:
-  #   container_name: company
-  #   image: dipandhali2021/companyms-v0:latest
-  #   ports:
-  #     - 8081:8081
-  #   depends_on:
-  #     - servicereg
-  #     - config-server-ms
-  #   networks:
-  #     - microservice-network
-  #     - jobapp
-  #   environment:
-  #       - SPRING_PROFILES_ACTIVE=docker
+  companyms:
+    container_name: company
+    image: dipandhali2021/companyms-v0:latest
+    ports:
+      - 8081:8081
+    depends_on:
+      - servicereg
+      - config-server-ms
+    networks:
+      - microservice-network
+      - jobapp
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
 
 
-  # jobms:
-  #   container_name: job
-  #   image: dipandhali2021/jobms-v0:latest
-  #   ports:
-  #     - 8082:8082
-  #   depends_on:
-  #     - servicereg
-  #     - config-server-ms
-  #   networks:
-  #     - microservice-network
-  #     - jobapp
-  #   environment:
-  #       - SPRING_PROFILES_ACTIVE=docker
-  #       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://servicereg:8761/eureka/
+  jobms:
+    container_name: job
+    image: dipandhali2021/jobms-v0:latest
+    ports:
+      - 8082:8082
+    depends_on:
+      - servicereg
+      - config-server-ms
+    networks:
+      - microservice-network
+      - jobapp
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
+        - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://servicereg:8761/eureka/
 
-  # reviewms:
-  #   container_name: review
-  #   image: dipandhali2021/reviewms-v0:latest
-  #   ports:
-  #     - 8083:8083
-  #   depends_on:
-  #     - servicereg
-  #     - config-server-ms
-  #   networks:
-  #     - microservice-network
-  #     - jobapp
-  #   environment:
-  #       - SPRING_PROFILES_ACTIVE=docker
-
-
-  # gatewayms:
-  #   container_name: gateway
-  #   image: dipandhali2021/gatewayms-v0:latest
-  #   ports:
-  #     - 8084:8084
-  #   depends_on:
-  #     - servicereg
-  #   networks:
-  #     - microservice-network
-  #     - jobapp
-  #   environment:
-  #       - SPRING_PROFILES_ACTIVE=docker
-
-  # zipkin:
-  #   container_name: zipkin
-  #   image: openzipkin/zipkin
-  #   ports:
-  #     - "9411:9411"
-  #   networks:
-  #     - microservice-network
-  #     - jobapp
-  #   restart: unless-stopped
-  #   mem_limit: 256m
-
-  # rabbitmq:
-  #   container_name: rabbitmq
-  #   image: rabbitmq:3-management
-  #   ports:
-  #     - "5672:5672"
-  #     - "15672:15672"
-  #   networks:
-  #     - microservice-network
-  #     - jobapp
-  #   restart: unless-stopped
-  #   mem_limit: 256m
+  reviewms:
+    container_name: review
+    image: dipandhali2021/reviewms-v0:latest
+    ports:
+      - 8083:8083
+    depends_on:
+      - servicereg
+      - config-server-ms
+    networks:
+      - microservice-network
+      - jobapp
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
 
 
-# volumes:
-#   postgres:
-#   pgadmin:
+  gatewayms:
+    container_name: gateway
+    image: dipandhali2021/gatewayms-v0:latest
+    ports:
+      - 8084:8084
+    depends_on:
+      - servicereg
+    networks:
+      - microservice-network
+      - jobapp
+    environment:
+        - SPRING_PROFILES_ACTIVE=docker
+
+  zipkin:
+    container_name: zipkin
+    image: openzipkin/zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - microservice-network
+      - jobapp
+    restart: unless-stopped
+    mem_limit: 256m
+
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - microservice-network
+      - jobapp
+    restart: unless-stopped
+    mem_limit: 256m
+
+
+volumes:
+  postgres:
+  pgadmin:
 
 networks:
   jobapp:
