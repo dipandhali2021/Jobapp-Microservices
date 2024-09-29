@@ -23,12 +23,12 @@ Microservices structure an application as a collection of small autonomous servi
 <div style="display:flex; gap:2px">
 
 <div style="text-align: center;">
-  <img src="image.png" alt="Microservices Architecture" width="500" height="200">
+  <img src="docs/images/image.png" alt="Microservices Architecture" width="500" height="200">
   <p>Monolithic Architecture</p>
 </div>
 
 <div style="text-align: center;">
-  <img src="image-1.png" alt="Microservices Communication" width="500" height="200">
+  <img src="docs/images/image-1.png" alt="Microservices Communication" width="500" height="200">
   <p>Microservices Architecture</p>
 </div>
 
