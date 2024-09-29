@@ -1,5 +1,8 @@
 # JOB Portal Microservices
 
+
+[![Postman Collection](https://assets.getpostman.com/common-share/postman-logo-horizontal-320x132.png)](https://www.postman.com/flight-operator-17145634/workspace/job-microservices)
+
 ## Monolithic Architecture
 
 Monolithic architecture is a design where all the components of an application are interconnected and interdependent.

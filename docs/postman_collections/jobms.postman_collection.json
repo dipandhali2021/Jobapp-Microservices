@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "3d54df88-abbf-4af9-b602-1a979d8158b5",
+		"name": "jobms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26804879"
+	},
+	"item": [
+		{
+			"name": "add job",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\":\"SDE1\",\r\n    \"minSalary\":\"40000000\",\r\n    \"maxSalary\":\"80000000\",\r\n    \"location\":\"Dholucekpur\",\r\n    \"title\":\"Website\",\r\n    \"companyId\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{job_bases_url}}/jobs",
+					"host": [
+						"{{job_bases_url}}"
+					],
+					"path": [
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get job",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{job_bases_url}}/jobs",
+					"host": [
+						"{{job_bases_url}}"
+					],
+					"path": [
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get job by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{job_bases_url}}/jobs/1",
+					"host": [
+						"{{job_bases_url}}"
+					],
+					"path": [
+						"jobs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update job",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\":\"SDE4\",\r\n    \"minSalary\":\"40000000\",\r\n    \"maxSalary\":\"80000000\",\r\n    \"location\":\"Dholuckpor\",\r\n    \"title\":\"des\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{job_bases_url}}/jobs/1",
+					"host": [
+						"{{job_bases_url}}"
+					],
+					"path": [
+						"jobs",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete job",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":2,\r\n    \"description\":\"SDE2\",\r\n    \"minSalary\":\"40000000\",\r\n    \"maxSalary\":\"80000000\",\r\n    \"location\":\"Dholuckpur\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{job_bases_url}}/jobs/2",
+					"host": [
+						"{{job_bases_url}}"
+					],
+					"path": [
+						"jobs",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

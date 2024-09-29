@@ -1,0 +1,125 @@
+{
+	"info": {
+		"_postman_id": "cd0ae837-d064-4f5d-a534-d0b1661327b4",
+		"name": "companyms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26804879"
+	},
+	"item": [
+		{
+			"name": "add company",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Company 4\",\r\n    \"description\":\"Testing\",\r\n    \"rating\":5.0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{company_base_url}}/companies",
+					"host": [
+						"{{company_base_url}}"
+					],
+					"path": [
+						"companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get company",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{company_base_url}}/companies",
+					"host": [
+						"{{company_base_url}}"
+					],
+					"path": [
+						"companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get company by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{company_base_url}}/companies/1",
+					"host": [
+						"{{company_base_url}}"
+					],
+					"path": [
+						"companies",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update company",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Company 2\",\r\n    \"description\":\"Testing\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{company_base_url}}/companies/1",
+					"host": [
+						"{{company_base_url}}"
+					],
+					"path": [
+						"companies",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete company",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":2,\r\n    \"description\":\"SDE2\",\r\n    \"minSalary\":\"40000000\",\r\n    \"maxSalary\":\"80000000\",\r\n    \"location\":\"Dholuckpur\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{company_base_url}}/companies/6",
+					"host": [
+						"{{company_base_url}}"
+					],
+					"path": [
+						"companies",
+						"6"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
