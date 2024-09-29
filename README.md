@@ -20,15 +20,18 @@ Monolithic architecture is a design where all the components of an application a
 
 Microservices structure an application as a collection of small autonomous services.
 
-<div style="display:flex; gap:2px">
+<div style="display:flex; gap:2px;">
 
 <div style="text-align: center;">
-  <img src="docs/images/image.png" alt="Microservices Architecture" width="500" height="200">
+
+  ![Monolithic Architecture](docs/images/image.png)
+  
   <p>Monolithic Architecture</p>
 </div>
 
 <div style="text-align: center;">
-  <img src="docs/images/image-1.png" alt="Microservices Communication" width="500" height="200">
+  
+  ![Microservices Architecture](docs/images/image-1.png)
   <p>Microservices Architecture</p>
 </div>
 
