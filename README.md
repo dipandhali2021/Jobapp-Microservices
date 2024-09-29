@@ -555,6 +555,3 @@ spec:
             - containerPort: 80
 ```
 
----
-
-This README provides a comprehensive overview of the JOB Portal Microservices project, covering key concepts, technologies, and best practices.
