@@ -1,7 +1,31 @@
 # JOB Portal Microservices
 
+[<img alt="Postman Collection" height="40px" src="https://assets.getpostman.com/common-share/postman-logo-horizontal-320x132.png" width="100px"/>](https://www.postman.com/flight-operator-17145634/workspace/job-microservices)
 
-[![Postman Collection](https://assets.getpostman.com/common-share/postman-logo-horizontal-320x132.png)](https://www.postman.com/flight-operator-17145634/workspace/job-microservices)
+
+## Setup
+
+### Docker Compose
+
+1. Ensure Docker and Docker Compose are installed on your machine.
+2. Navigate to the project root directory.
+3. Build and start the Docker containers:
+   ```sh
+   docker-compose up -d
+    ```
+
+### Maven Package Build
+1. Navigate to each microservice root directory .
+2. Build the project using Maven:
+   ```sh
+   mvn clean package
+   ```
+3. Run the JAR file:
+   ```sh
+    java -jar target/{microservice}-0.0.1-SNAPSHOT.jar
+    ```
+4. Access the application at localhost port.
+
 
 ## Monolithic Architecture
 
@@ -27,14 +51,14 @@ Microservices structure an application as a collection of small autonomous servi
 
 <div style="text-align: center;">
 
-  ![Monolithic Architecture](docs/images/image.png)
+<img alt="Monolithic Architecture" src="docs/images/image.png"/>
   
   <p>Monolithic Architecture</p>
 </div>
 
 <div style="text-align: center;">
-  
-  ![Microservices Architecture](docs/images/image-1.png)
+
+<img alt="Microservices Architecture" src="docs/images/image-1.png"/>
   <p>Microservices Architecture</p>
 </div>
 
